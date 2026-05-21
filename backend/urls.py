@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.http import JsonResponse
-from django.urls import path
+from django.urls import path, include
+
 
 def test_view(request):
     return JsonResponse({"message": "API funcionando correctamente"})
@@ -24,4 +25,5 @@ def test_view(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/test/', test_view),
+    path('api/favorites/', include('favorites.urls')),
 ]
